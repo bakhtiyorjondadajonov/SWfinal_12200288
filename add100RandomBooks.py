@@ -33,6 +33,20 @@ def addBook(book, apiKey):
         print(f"Book {book} added.")
     else:
         raise Exception(f"Error code {r.status_code} and text {r.text}, while trying to add book {book}.")
+        
+        def deleteBookFirstandLastBooks(apiKey):
+    r = requests.post(
+        f"{APIHOST}/api/v1/books", 
+        headers = {
+            "Content-type": "application/json",
+            "X-API-Key": apiKey
+            },
+        data = json.dumps(book)
+    )
+    if r.status_code == 200:
+        print(f"Books removed.")
+    else:
+        raise Exception(f"Error code {r.status_code} and text {r.text}, while trying to remove boos.")
 
 # Get the Auth Token Key
 apiKey = getAuthToken()
